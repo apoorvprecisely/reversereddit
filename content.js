@@ -1,7 +1,14 @@
-var firstHref = $("a[href^='http']").eq(0).attr("href");
-$.getJSON("http://www.reddit.com/r/pics/search.json?q=kittens&sort=new", function(data){
+var firstHref = window.location.href;
+$.getJSON("http://www.reddit.com/.json", function(data){
 
-alert(data.kind);
+   $.each(data.data.children, function(index, element) {
+   var url=element.data.url;
+   //console.log(firstHref);
+                 //  console.log(index+" : "+ element.data.url);
+   if(url==firstHref){
+                alert(" Title : "+ element.data.title);
+                }
 
+    });
 
     });
